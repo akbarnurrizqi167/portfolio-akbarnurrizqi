@@ -19,6 +19,19 @@ const safeUrl = (value: string | undefined) => {
   return /^(https?:\/\/|mailto:|#|\/)/.test(value || "") ? value || "" : "";
 };
 
+const imageUrlFrom = (value: string | undefined) => {
+  const url = safeUrl(value);
+  if (!url) return "";
+
+  const driveFileId =
+    url.match(/drive\.google\.com\/file\/d\/([^/?#]+)/)?.[1] ||
+    url.match(/[?&]id=([^&#]+)/)?.[1];
+
+  return driveFileId
+    ? `https://drive.google.com/thumbnail?id=${encodeURIComponent(driveFileId)}&sz=w1200`
+    : url;
+};
+
 const splitValues = (value: string | undefined) =>
   (value || "")
     .split("|")
@@ -161,7 +174,7 @@ export default function Home() {
   ];
 
   const resumeUrl = safeUrl(profile.resume_url);
-  const imageUrl = safeUrl(profile.photo_url);
+  const imageUrl = imageUrlFrom(profile.photo_url);
   const primaryUrl = safeUrl(profile.primary_cta_url) || "#projects";
   const secondaryUrl = safeUrl(profile.secondary_cta_url) || "#contact";
 
@@ -450,7 +463,7 @@ export default function Home() {
                   </div>
                 </article>
               ))}
-              {resumeUrl && (
+              {isTrue(settings.show_resume) && resumeUrl && (
                 <a className="resume-link" href={resumeUrl} target="_blank" rel="noreferrer">
                   Download résumé <Arrow />
                 </a>

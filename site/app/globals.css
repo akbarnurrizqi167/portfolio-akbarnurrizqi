@@ -189,12 +189,13 @@ img {
 
 .hero {
   display: grid;
-  gap: clamp(3rem, 8vw, 8rem);
-  grid-template-columns: minmax(0, 1.5fr) minmax(310px, 0.72fr);
+  column-gap: clamp(2.5rem, 5vw, 5.5rem);
+  grid-template-columns: minmax(0, 1.66fr) minmax(300px, 0.66fr);
   min-height: calc(100svh - 75px);
-  padding-bottom: 54px;
-  padding-top: clamp(76px, 11vh, 138px);
+  padding-bottom: clamp(26px, 3.5vh, 42px);
+  padding-top: clamp(38px, 5vh, 68px);
   position: relative;
+  row-gap: clamp(24px, 3vh, 38px);
 }
 
 .hero-copy {
@@ -225,12 +226,13 @@ img {
 }
 
 .hero h1 {
-  font-size: clamp(3.5rem, 7.4vw, 7.15rem);
+  font-size: clamp(3.5rem, 6.2vw, 6.3rem);
   font-weight: 690;
-  letter-spacing: -0.076em;
-  line-height: 0.9;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
   margin: 0;
   max-width: 990px;
+  text-wrap: balance;
 }
 
 .hero h1 span {
@@ -306,7 +308,7 @@ img {
 }
 
 .hero-panel {
-  align-self: end;
+  align-self: center;
   background: rgba(16, 21, 19, 0.84);
   border: 1px solid var(--line);
   box-shadow: 22px 22px 0 rgba(140, 230, 182, 0.035);
@@ -1281,6 +1283,61 @@ a.publication-item:hover {
   }
 }
 
+@media (min-width: 861px) and (max-height: 920px) {
+  .hero {
+    padding-bottom: 22px;
+    padding-top: 28px;
+    row-gap: 18px;
+  }
+
+  .eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .intro-name {
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.4rem, 5.45vw, 5.4rem);
+  }
+
+  .role-line {
+    margin-top: 20px;
+  }
+
+  .hero-summary {
+    font-size: 0.96rem;
+    line-height: 1.65;
+    margin-top: 17px;
+    max-width: 680px;
+  }
+
+  .hero-actions {
+    margin-top: 23px;
+  }
+
+  .hero-panel {
+    padding: 20px;
+  }
+
+  .hero-portrait {
+    margin-bottom: 16px;
+  }
+
+  .status-line {
+    padding-bottom: 14px;
+  }
+
+  .metric {
+    padding-top: 16px;
+  }
+
+  .hero-footnote {
+    padding-top: 14px;
+  }
+}
+
 @media (max-width: 1100px) {
   .site-header {
     grid-template-columns: 1fr auto;
@@ -1291,7 +1348,7 @@ a.publication-item:hover {
   }
 
   .hero {
-    gap: 52px;
+    column-gap: 52px;
     grid-template-columns: minmax(0, 1.2fr) minmax(290px, 0.8fr);
   }
 
@@ -1357,7 +1414,8 @@ a.publication-item:hover {
 
   .hero {
     grid-template-columns: 1fr;
-    padding-top: 78px;
+    padding-top: 52px;
+    row-gap: 42px;
   }
 
   .hero-panel {
