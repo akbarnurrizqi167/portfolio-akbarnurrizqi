@@ -792,8 +792,7 @@ img {
   padding: 6px 8px;
 }
 
-.text-link,
-.resume-link {
+.text-link {
   align-items: center;
   color: var(--mint);
   display: inline-flex;
@@ -803,6 +802,46 @@ img {
   margin-top: auto;
   padding-top: 20px;
   width: fit-content;
+}
+
+.project-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.project-link {
+  align-items: center;
+  border: 1px solid var(--line-bright);
+  color: var(--ink);
+  display: inline-flex;
+  font-size: 0.67rem;
+  font-weight: 700;
+  gap: 8px;
+  padding: 9px 11px;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.project-link:hover,
+.project-link:focus-visible {
+  background: rgba(140, 230, 182, 0.08);
+  border-color: var(--mint);
+  color: var(--mint);
+}
+
+.project-link-primary {
+  background: var(--mint);
+  border-color: var(--mint);
+  color: #06110b;
+}
+
+.project-link-primary:hover,
+.project-link-primary:focus-visible {
+  background: #a5f1c8;
+  color: #06110b;
 }
 
 .centered-button {
@@ -956,7 +995,24 @@ img {
 }
 
 .resume-link {
+  align-items: center;
+  border: 1px solid var(--mint);
+  color: var(--mint);
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 750;
+  gap: 10px;
   margin-top: 50px;
+  padding: 11px 15px;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+  width: fit-content;
+}
+
+.resume-link:hover,
+.resume-link:focus-visible {
+  background: var(--mint);
+  color: #06110b;
+  transform: translateY(-2px);
 }
 
 .skill-groups {
@@ -1155,6 +1211,32 @@ a.publication-item:hover {
 .contact-details a {
   font-size: 0.78rem;
   margin: 0;
+}
+
+.contact-details a {
+  align-items: center;
+  color: var(--ink);
+  display: inline-flex;
+  gap: 9px;
+  text-decoration: underline;
+  text-decoration-color: rgba(140, 230, 182, 0.62);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+  width: fit-content;
+}
+
+.contact-details a::after {
+  color: var(--mint);
+  content: "↗";
+  font-size: 0.72rem;
+  text-decoration: none;
+}
+
+.contact-details a:hover,
+.contact-details a:focus-visible {
+  color: var(--mint);
+  text-decoration-color: var(--mint);
 }
 
 .contact-form {

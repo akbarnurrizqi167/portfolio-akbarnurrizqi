@@ -259,6 +259,11 @@ export default function Home() {
               <a className="button button-primary" href={primaryUrl}>
                 {profile.primary_cta_label || "View Projects"} <Arrow direction="east" />
               </a>
+              {isTrue(settings.show_resume) && resumeUrl && (
+                <a className="button button-secondary" href={resumeUrl} target="_blank" rel="noreferrer">
+                  View Résumé <Arrow />
+                </a>
+              )}
               <a className="button button-secondary" href={secondaryUrl}>
                 {profile.secondary_cta_label || "Contact Me"} <Arrow />
               </a>
@@ -353,7 +358,8 @@ export default function Home() {
           <div className="projects-grid">
             {filteredProjects.slice(0, visibleProjects).map((project, index) => {
               const projectImage = safeUrl(project.image_url);
-              const projectLink = safeUrl(project.demo_url) || safeUrl(project.repository_url);
+              const demoUrl = safeUrl(project.demo_url);
+              const repositoryUrl = safeUrl(project.repository_url);
               return (
                 <article className="project-card" key={project.id}>
                   <div className={`project-visual visual-${(index % 4) + 1}`}>
@@ -378,10 +384,19 @@ export default function Home() {
                     <div className="tag-list">
                       {splitValues(project.tech_tags).map((tag) => <span key={tag}>{tag}</span>)}
                     </div>
-                    {projectLink && (
-                      <a className="text-link" href={projectLink} target="_blank" rel="noreferrer">
-                        View project <Arrow />
-                      </a>
+                    {(demoUrl || repositoryUrl) && (
+                      <div className="project-actions">
+                        {demoUrl && (
+                          <a className="project-link project-link-primary" href={demoUrl} target="_blank" rel="noreferrer">
+                            Live Demo <Arrow />
+                          </a>
+                        )}
+                        {repositoryUrl && (
+                          <a className="project-link" href={repositoryUrl} target="_blank" rel="noreferrer">
+                            {repositoryUrl.includes("github.com") ? "GitHub Repository" : "Repository"} <Arrow />
+                          </a>
+                        )}
+                      </div>
                     )}
                   </div>
                 </article>
@@ -465,7 +480,7 @@ export default function Home() {
               ))}
               {isTrue(settings.show_resume) && resumeUrl && (
                 <a className="resume-link" href={resumeUrl} target="_blank" rel="noreferrer">
-                  Download résumé <Arrow />
+                  View résumé <Arrow />
                 </a>
               )}
             </div>

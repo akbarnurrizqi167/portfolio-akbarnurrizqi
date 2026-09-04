@@ -14,7 +14,7 @@ pnpm dev
 
 Edit the public Google Sheet. Published rows are refreshed in visitors' browsers without rebuilding or changing source code. Keep each worksheet name and header row unchanged. Set `published` to `TRUE` to show a row; placeholders containing `TODO_NEEDS_INPUT` are hidden.
 
-For media fields, paste a public URL as plain text rather than inserting a Google Drive file chip. `photo_url` accepts normal image URLs and public Google Drive share links. The résumé stays private unless `show_resume` is set to `TRUE` in `site_settings` and `resume_url` contains a public URL.
+For media fields, paste a public URL as plain text rather than inserting a Google Drive file chip. `photo_url` accepts normal image URLs and public Google Drive share links. The résumé stays private unless `show_resume` is set to `TRUE` in `site_settings` and `resume_url` contains a public URL; the PDF remains outside this repository.
 
 ## Netlify deployment
 
