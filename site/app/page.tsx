@@ -425,27 +425,40 @@ export default function Home() {
             <div className="timeline">
               {data.experience
                 .slice(0, showAllExperience ? data.experience.length : 6)
-                .map((item, index) => (
-                  <article className="timeline-item" key={item.id}>
-                    <div className="timeline-count">{String(index + 1).padStart(2, "0")}</div>
-                    <div className="timeline-when">
-                      <time>{formatDate(item.start_date)}</time>
-                      <span>—</span>
-                      <time>{isTrue(item.is_current) ? "Present" : formatDate(item.end_date)}</time>
-                    </div>
-                    <div className="timeline-content">
-                      <p className="timeline-type">{item.employment_type} · {item.location}</p>
-                      <h3>{item.job_title}</h3>
-                      <h4>{item.company}</h4>
-                      <p>{item.summary}</p>
-                      <ul>
-                        {splitAchievements(item.achievements).map((achievement) => (
-                          <li key={achievement}>{achievement}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </article>
-                ))}
+                .map((item, index) => {
+                  const evidenceUrl = safeUrl(
+                    item.evidence_url || item.certificate_url || item.supporting_url,
+                  );
+                  const evidenceLabel =
+                    item.evidence_label || item.link_label || "View supporting evidence";
+
+                  return (
+                    <article className="timeline-item" key={item.id}>
+                      <div className="timeline-count">{String(index + 1).padStart(2, "0")}</div>
+                      <div className="timeline-when">
+                        <time>{formatDate(item.start_date)}</time>
+                        <span>—</span>
+                        <time>{isTrue(item.is_current) ? "Present" : formatDate(item.end_date)}</time>
+                      </div>
+                      <div className="timeline-content">
+                        <p className="timeline-type">{item.employment_type} · {item.location}</p>
+                        <h3>{item.job_title}</h3>
+                        <h4>{item.company}</h4>
+                        <p>{item.summary}</p>
+                        <ul>
+                          {splitAchievements(item.achievements).map((achievement) => (
+                            <li key={achievement}>{achievement}</li>
+                          ))}
+                        </ul>
+                        {evidenceUrl && (
+                          <a className="evidence-link" href={evidenceUrl} target="_blank" rel="noreferrer">
+                            {evidenceLabel} <Arrow />
+                          </a>
+                        )}
+                      </div>
+                    </article>
+                  );
+                })}
             </div>
             {data.experience.length > 6 && (
               <button
@@ -638,6 +651,9 @@ export default function Home() {
                 <button className="button button-primary" type="submit">
                   Send message <Arrow direction="east" />
                 </button>
+                <a className="email-fallback" href={`mailto:${profile.email}`}>
+                  Email directly <Arrow />
+                </a>
                 <p aria-live="polite">{formStatus}</p>
               </div>
             </form>
