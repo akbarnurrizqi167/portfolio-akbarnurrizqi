@@ -259,7 +259,7 @@ export default function Home() {
               <a className="button button-primary" href={primaryUrl}>
                 {profile.primary_cta_label || "View Projects"} <Arrow direction="east" />
               </a>
-              {isTrue(settings.show_resume) && resumeUrl && (
+              {resumeUrl && (
                 <a className="button button-secondary" href={resumeUrl} target="_blank" rel="noreferrer">
                   View Résumé <Arrow />
                 </a>
@@ -478,7 +478,7 @@ export default function Home() {
                   </div>
                 </article>
               ))}
-              {isTrue(settings.show_resume) && resumeUrl && (
+              {resumeUrl && (
                 <a className="resume-link" href={resumeUrl} target="_blank" rel="noreferrer">
                   View résumé <Arrow />
                 </a>

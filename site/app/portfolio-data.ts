@@ -142,7 +142,6 @@ export const fallbackData: PortfolioData = {
     { key: "show_publications", value: "TRUE" },
     { key: "show_awards", value: "TRUE" },
     { key: "show_certifications", value: "TRUE" },
-    { key: "show_resume", value: "FALSE" },
     { key: "default_projects_limit", value: "6" },
   ],
   profile: [
