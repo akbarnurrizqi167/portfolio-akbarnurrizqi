@@ -157,7 +157,7 @@ export const fallbackData: PortfolioData = {
         "Information Systems graduate with hands-on experience in data analytics, machine learning, computer vision, and AI development across industry, research, and educational programs. Developed data- and AI-driven solutions using Python, SQL, deep learning, OCR, data visualization, and cloud-based tools.",
       location: "Sleman, Daerah Istimewa Yogyakarta",
       email: "akbarnurrizqi167@gmail.com",
-      photo_url: "",
+      photo_url: "/images/profile.jpg",
       resume_url: "",
       availability_text: "Open to Opportunities",
       primary_cta_label: "View Projects",
